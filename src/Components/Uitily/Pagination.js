@@ -1,17 +1,21 @@
 import React from 'react'
 import ReactPaginate from "react-paginate";
 
-const Pagination = () => {
+const Pagination = ({pageCount,onPress}) => {
 
-    const handlePageClick = () => { };
+    const handlePageClick = (page) => { 
+        console.log("pagin",page.selected+1)
+        onPress(page.selected+1)
+    };
     return (
+        <div className='mt-5 pt-5'>
         <ReactPaginate
             breakLabel="..."
             nextLabel="التالى"
             onPageChange={handlePageClick}
             marginPagesDisplayed={2}
             pageRangeDisplayed={2}
-            pageCount={100}
+            pageCount={pageCount}
             previousLabel="السابق"
             containerClassName={"pagination justify-content-center p-3"}
             pageClassName={"page-item"}
@@ -24,6 +28,7 @@ const Pagination = () => {
             breakLinkClassName={"page-link"}
             activeClassName={"active"}
         />
+        </div>
     )
 }
 

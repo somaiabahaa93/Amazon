@@ -1,32 +1,36 @@
 import React from 'react'
 import BrandCard from './BrandCard'
-import brand1 from "../../images/brand1.png";
-import brand2 from "../../images/brand2.png";
-import brand3 from "../../images/brand3.png";
-import { Container, Row } from 'react-bootstrap';
-const BrandContainer = () => {
+
+import { Container, Row, Spinner } from 'react-bootstrap';
+const BrandContainer = ({brands,loading}) => {
     return (
         <Container>
             <div className="admin-content-text mt-2 ">كل الماركات</div>
             <Row className='my-1 d-flex justify-content-between'>
-                <BrandCard img={brand1} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand3} />
+               
+                {loading === false ? (
+          brands.data ? (
+            brands.data.map((item, index) => {
+              return (
+                <BrandCard
+                  title={item.name}
+                  key={index}
+                  img={item.image}
+                  id={item._id}
+                 
+                />
+              );
+            })
+          ) : (
+            <div>there are no data now</div>
+          )
+        ) : (
+          <div className="text-center">
+            {" "}
+            <Spinner animation="border" variant="primary" />
+          </div>
+        )}
+                
 
             </Row>
         </Container>

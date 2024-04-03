@@ -1,37 +1,41 @@
-import React from 'react'
-import { Container, Row } from 'react-bootstrap'
-import CategoryCard from './../Category/CategoryCard';
-import clothe from "../../images/clothe.png";
-import cat2 from "../../images/cat2.png";
-import labtop from "../../images/labtop.png";
-import sale from "../../images/sale.png";
-import pic from "../../images/pic.png";
-const CategoryContainer = () => {
-    return (
-        <Container >
-        <div className="admin-content-text mt-2 ">كل التصنيفات</div>
-            <Row className='my-2 d-flex justify-content-between'>
-                <CategoryCard title="اجهزة منزلية" img={clothe} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={cat2} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={labtop} background="#0034FF" />
-                <CategoryCard title="اجهزة منزلية" img={sale} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={clothe} background="#FF6262" />
-                <CategoryCard title="اجهزة منزلية" img={pic} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={clothe} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={cat2} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={labtop} background="#0034FF" />
-                <CategoryCard title="اجهزة منزلية" img={sale} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={clothe} background="#FF6262" />
-                <CategoryCard title="اجهزة منزلية" img={pic} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={clothe} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={cat2} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={labtop} background="#0034FF" />
-                <CategoryCard title="اجهزة منزلية" img={sale} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={clothe} background="#FF6262" />
-                <CategoryCard title="اجهزة منزلية" img={pic} background="#F4DBA4" />
-            </Row>
-        </Container>
-    )
-}
+import CategoryCard from "./../Category/CategoryCard";
 
-export default CategoryContainer
+import { Container, Row, Spinner } from "react-bootstrap";
+
+import React from "react";
+
+const CategoryContainer = ({ categories, loading }) => {
+  const colors = ["#ffd3e8", "#f4dba5", "#55cfdf", "#0034ff", "#ffd3e8"];
+
+  return (
+    <Container>
+      <div className="admin-content-text mt-2 ">كل التصنيفات</div>
+      <Row className="my-2 d-flex justify-content-between">
+        {loading === false ? (
+          categories.data ? (
+            categories.data.map((item, index) => {
+              return (
+                <CategoryCard
+                id={item._id}
+                  title={item.name}
+                  key={index}
+                  img={item.image}
+                  background={colors[Math.floor(Math.random() * 6) + 1]}
+                />
+              );
+            })
+          ) : (
+            <div>there are no data now</div>
+          )
+        ) : (
+          <div className="text-center">
+            {" "}
+            <Spinner animation="border" variant="primary" />
+          </div>
+        )}
+      </Row>
+    </Container>
+  );
+};
+
+export default CategoryContainer;

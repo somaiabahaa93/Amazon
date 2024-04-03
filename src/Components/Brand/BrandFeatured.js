@@ -1,26 +1,36 @@
-import React from 'react'
-import { Container, Row } from 'react-bootstrap'
-import SubTiltle from '../Uitily/SubTiltle'
-import BrandCard from './BrandCard'
-import brand1 from "../../images/brand1.png";
-import brand2 from "../../images/brand2.png";
-import brand3 from "../../images/brand3.png";
+import { Container, Row, Spinner } from "react-bootstrap";
+import SubTiltle from "../Uitily/SubTiltle";
+import BrandCard from "./BrandCard";
+import React from "react";
+import HomeBrandHook from "../../hook/Brand/HomeBrandHook";
+
 
 const BrandFeatured = ({ title, btntitle }) => {
-    return (
-        <Container>
-            <SubTiltle title={title} btntitle={btntitle} pathText="/allbrand" />
-            <Row className='my-1 d-flex justify-content-between'>
-                <BrandCard img={brand1} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand1} />
-                <BrandCard img={brand3} />
+const [brands,loading]=HomeBrandHook()
 
-            </Row>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <SubTiltle title={title} btntitle={btntitle} pathText="/allbrand" />
+      <Row className="my-1 d-flex justify-content-between">
+        {loading === false ? (
+          brands?.data ? (
+            brands.data.slice(0, 5).map((item, index) => {
+              return (
+                <BrandCard id={item._id} title={item.name} key={index} img={item.image} />
+              );
+            })
+          ) : (
+            <div>there are no data now</div>
+          )
+        ) : (
+          <div className="text-center">
+            {" "}
+            <Spinner animation="border" variant="primary" />
+          </div>
+        )}
+      </Row>
+    </Container>
+  );
+};
 
-export default BrandFeatured
+export default BrandFeatured;
