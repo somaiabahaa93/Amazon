@@ -56,7 +56,7 @@ const LoginHook = () => {
         console.log("login", loginData);
 
         localStorage.removeItem("token");
-        notify(loginData.message, "error");
+        notify(loginData?.message, "error");
       }
 
       try {

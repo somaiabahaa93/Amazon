@@ -13,15 +13,14 @@ import NavbarSearchHook from "../../hook/search/NavbarSearchHook";
 import AllCartProductsHook from "../../hook/cart/GetAllUserCartHook";
 const NavBarLogin = () => {
   const [searchWord, onChangeSerachWord] = NavbarSearchHook();
-  const [res]=AllCartProductsHook()
-  console.log(res)
+  const [itemsNum]=AllCartProductsHook()
   let keyword = "";
   if (localStorage.getItem("searchWord")) {
     keyword = localStorage.getItem("searchWord");
   }
 
   const [user, setUser] = useState("");
-  //  console.log("user",user)
+   console.log("catsItemmmms>>>>>>>>>>>>>>>>>>>>>",itemsNum)
 
   useEffect(() => {
     if (localStorage.getItem("user") !== null) {
@@ -89,7 +88,7 @@ const NavBarLogin = () => {
               <img src={cart} className="login-img" alt="sfvs" />
               <p style={{ color: "white" }}>العربه</p>
               <span class="position-absolute top-10 start-0 translate-middle badge rounded-pill bg-danger">
-               {res?(res.numOfCartItems):0}
+               {itemsNum}
                 <span class="visually-hidden">unread messages</span>
               </span>
             </Nav.Link>

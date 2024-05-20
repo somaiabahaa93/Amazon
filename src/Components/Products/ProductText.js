@@ -4,14 +4,14 @@ import { ToastContainer } from 'react-toastify';
 
 import { useParams } from "react-router-dom";
 import ViewProductDetailsHook from "../../hook/Product/ViewProductDetailsHook";
-import AddProductToCart from "../../hook/cart/AddProductToCartHook";
+import AddProductToCartHook from "../../hook/cart/AddProductToCartHook";
 const ProductText = () => {
   const { id } = useParams();
-
   const [item, images, cat, proBrand, prods] = ViewProductDetailsHook(id);
- const [colorIndex,getIndex,handleAddingProduct]=AddProductToCart(id,item)
-
+ const [colorIndex,getIndex,handleAddingProduct]=AddProductToCartHook(id,item)
+console.log("?????????????????????????????",item)
   return (
+
     <div>
       <Row className="mt-2">
         <div className="cat-text">{cat.name}</div>
@@ -64,12 +64,12 @@ const ProductText = () => {
         <Col md="12">
           
             {item?.price} جنية
-            {item.priceAfterDiscount?(
+            {item?.priceAfterDiscount?(
               <div className="product-price d-inline px-3 py-3 border">  
-              <span style={{textDecoration:"line-through"}}> ({item.price})</span>{item.priceAfterDiscount}$
+              <span style={{textDecoration:"line-through"}}> ({item?.price})</span>{item.priceAfterDiscount}$
               </div>
               
-            ):<div className="product-price d-inline px-3 py-3 border">{item.price}</div>}
+            ):<div className="product-price d-inline px-3 py-3 border">{item?.price}</div>}
         
           <div onClick={handleAddingProduct} className="product-cart-add px-3 py-3 d-inline mx-3">
             اضف للعربة

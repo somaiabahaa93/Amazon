@@ -9,7 +9,7 @@ const CategoryContainer = ({ categories, loading }) => {
 
   return (
     <Container>
-      <div className="admin-content-text mt-2 ">كل التصنيفات</div>
+      <div className="admin-content-text mt-2 "> All Categories</div>
       <Row className="my-2 d-flex justify-content-between">
         {loading === false ? (
           categories.data ? (

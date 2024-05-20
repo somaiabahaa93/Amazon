@@ -11,7 +11,7 @@ export const getAllCategory = (limit) => async (dispatch) => {
     // console.log("data",res)
     dispatch({ type: GET_ALL_CATEGORY, payload: res });
   } catch (e) {
-    dispatch({ type: GET_ALL_CATEGORY, payload: "Error" + e });
+    dispatch({ type: GET_ERROR, payload: "Error" + e });
   }
 };
 
@@ -33,10 +33,10 @@ export const createCategory = (formData) => async (dispatch) => {
   try {
     // const res = await baseURL.get("/api/v1/categories");
     const res= await useInsertDataeWithImage(`/api/v1/categories`,formData)
-    // console.log("data",res)
+    console.log("dataooooooooo",res)
     dispatch({ type:CREATE_CATEGORY, payload: res });
   } catch (e) {
-    dispatch({ type: CREATE_CATEGORY, payload: "Error" + e });
+    dispatch({ type: GET_ERROR, payload: "Error" + e });
   }
 };
 

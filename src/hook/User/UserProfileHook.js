@@ -89,6 +89,11 @@ const UserProfileHook = () => {
         notify("new password doesn't match confirm password","error")
         return;
     }
+    if(newPassword.length<6||confirmPassword.length<6)
+      {
+          notify(" password must be at least 6","error")
+          return;
+      }
     await dispatch(
       editUserPassword({
         currentPassword: password,

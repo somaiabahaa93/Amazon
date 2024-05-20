@@ -4,6 +4,8 @@ import avatar from "../../images/avatar.png";
 import { useSelector, useDispatch } from "react-redux";
 import { createCategory } from "../../Redux/actions/categoryActions";
 import { ToastContainer } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+
 import notify from "../../hook/notificationHook";
 const AdminAddCategoryHook = () => {
     const [img, setImage] = useState(avatar);
@@ -13,11 +15,13 @@ const AdminAddCategoryHook = () => {
     const [isPress,setIsPress]=useState(false)
     const data=useSelector(state=>state.allCategory.category)
     const dispatch=useDispatch()
+    const navigate=useNavigate()
   
   // get selected image
     const onImageChange=(event)=>{
       if(event.target.files && event.target.files[0])
       {
+        // to show the image selected
           setImage(URL.createObjectURL(event.target.files[0]))
           setselectedFile(event.target.files[0])
       }
@@ -59,10 +63,11 @@ const AdminAddCategoryHook = () => {
           setTimeout(() => {
               setIsPress(false)
           }, 1000);
-          console.log(data)
-          if(data.status===201)
+          if(data.status===200)
           {
-      notify("item aded successfully","success")
+      notify("item added successfully","success")
+      // navigate('/admin/allproducts')
+
           }
           else 
           {

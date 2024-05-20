@@ -38,7 +38,7 @@ const AddProductHook = () => {
   
   
     //   get all categories
-    const categories = useSelector((state) => state.allCategory.category);
+    const categories = useSelector((state) => state.allCategory.categories);
     const brands = useSelector((state) => state.allBrand.brands);
     const products = useSelector((state) => state.allProducts.products);
     const subCategories = useSelector((state) => state.allSubCategory.subCategory);

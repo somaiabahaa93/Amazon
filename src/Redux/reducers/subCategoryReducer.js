@@ -1,6 +1,7 @@
 import {CREATE_SUB_CATEGORY,GET_SUB_CATEGORY} from "../types";
 const initial = {
   subCategory: [],
+  subCategories:[],
   loading: true,
 };
 const subCategoryReducer = (state = initial, action) => {
@@ -14,7 +15,7 @@ const subCategoryReducer = (state = initial, action) => {
       case GET_SUB_CATEGORY:
         return {
           ...state,
-          subCategory: action.payload,
+          subCategories: action.payload,
           loading: false,
         }
      

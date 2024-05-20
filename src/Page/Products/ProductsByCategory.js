@@ -14,14 +14,16 @@ const ProductsByCategory = () => {
     else 
     pageCount=0
   return (
+    
     <div style={{ minHeight: '670px' }}>
     <Container>
-        <Row className='d-flex flex-row'>
+      {items?.length?(<Row className='d-flex flex-row'>
             
             <Col sm="12" xs="10" md="11">
                  <CardProductsContainer products={items} title="" btntitle=""/>
             </Col>
-        </Row>
+        </Row>):(<h2>no products added now </h2>)}
+        
             <Pagination pageCount={pageCount} onPress={onPress} />
     </Container>
 </div>

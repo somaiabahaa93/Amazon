@@ -15,10 +15,10 @@ const HomePage = () => {
 
             <Silder />
             <HomeCategory />
-            <CardProductsContainer products={items} title="الاكثر مبيعا" btntitle="المزيد" pathText="/products" />
+            <CardProductsContainer products={items} title="الاكثر مبيعا" btntitle="more" pathText="/products" />
             <DiscountSection />
-            <CardProductsContainer products={items}  title="احدث الازياء" btntitle="المزيد" pathText="/products" />
-            <BrandFeatured title="اشهر الماركات" btntitle="المزيد"  />
+            <CardProductsContainer products={items}  title="احدث الازياء" btntitle="more" pathText="/products" />
+            <BrandFeatured title="اشهر الماركات" btntitle="more"  />
 
         </div>
     )

@@ -2,10 +2,10 @@ import React from 'react'
 import { Col,Row } from 'react-bootstrap'
 import mobile from '../../images/mobile.png'
 import deleteicon from '../../images/delete.png'
-const CartItem = () => {
+const CartItem = ({item}) => {
     return (
         <Col xs="12" className="cart-item-body my-2 d-flex px-2">
-        <img width="160px" height="197px" src={mobile} alt="" />
+        <img width="160px" height="197px" src={item.image} alt="" />
         <div className="w-100">
           <Row className="justify-content-between">
             <Col sm="12" className=" d-flex flex-row justify-content-between">

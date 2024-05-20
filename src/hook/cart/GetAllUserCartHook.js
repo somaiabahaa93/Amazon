@@ -23,12 +23,16 @@ const GetAllUserCartHook = () => {
         get()
     }, [])
     const res = useSelector(state => state.cartReducer.getAllUserCart)
+    console.log("itemsNum************************************",res)
+
     useEffect(() => {
         if (loading === false) {
-            if (res && res.status === "success") {
-                setItemsNum(res.numOfCartItems)
-                setCartItems(res.data.products)
+            if (res && res.message === "success") {
+                setItemsNum(res.totalItemsNumber)
+                setCartItems(res.data.cartItems)
                 setTotalCartPrice(res.data.totalCartPrice)
+
+
 
                 if (res.data.coupon) {
                     setCouponName(res.data.coupon)
@@ -51,6 +55,7 @@ const GetAllUserCartHook = () => {
 
         }
     }, [loading])
+
 
     return [itemsNum, cartItems, totalCartPrice, couponNameRes, totalCartPriceAfterDiscount]
 }

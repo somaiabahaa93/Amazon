@@ -19,11 +19,14 @@ const AddProductToCartHook = (prdID, item) => {
         setColorText(color)
     }
 
+    // another way to get item
+    const product=useSelector((state)=>state.allProducts.oneProduct)
+
 
     //add product to cart
     const addToCartHandel = async () => {
-        console.log(item.availableColors)
-        if (item.availableColors.length >= 1) {
+        console.log(item?.availableColors)
+        if (item.availableColors?.length >= 1) {
             if (colorText === "") {
                 notify("من فضلك اختر لون اولا للمنتج", "warn")
                 return

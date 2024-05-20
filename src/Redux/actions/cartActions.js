@@ -11,6 +11,7 @@ export const addProductToCart = (body) => async (dispatch) => {
             type: ADD_TO_CART,
             payload: response,
         })
+        console.log("Adding to cart",response)
 
     } catch (e) {
         dispatch({
@@ -25,7 +26,7 @@ export const addProductToCart = (body) => async (dispatch) => {
 export const getAllUserCartItems = () => async (dispatch) => {
     try {
         const response = await useGetDataToken(`/api/v1/cart`);
-        console.log(response)
+        console.log("userCart>>>>>>>>>>>>>>>>>>>>>",response)
         dispatch({
             type: GET_ALL_USER_CART,
             payload: response,

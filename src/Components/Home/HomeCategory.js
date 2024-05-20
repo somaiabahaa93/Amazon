@@ -9,7 +9,7 @@ const [categories,loading,colors]=HomeCategoryHook()
     
     return (
         <Container>
-            <SubTiltle title="التصنيفات" btntitle="المزيد" pathText="/allcategory" />
+            <SubTiltle title="categories" btntitle="more" pathText="/allcategory" />
             <Row className='my-2 d-flex justify-content-between'>
                 {
                     loading===false? (categories.data?(categories.data.slice(0,5).map((item,index)=>{

@@ -20,7 +20,7 @@ const AdminAddSubCategoryHook = () => {
     const [name, setName] = useState('')
     const [loading, setLoading] = useState(true)
     //get last catgeory state from redux
-    const category = useSelector(state => state.allCategory.category)
+    const category = useSelector(state => state.allCategory.categories)
 
 
     //get last sub catgeory state from redux

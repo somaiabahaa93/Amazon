@@ -10,29 +10,29 @@ const LoginPage = () => {
     <Container style={{ minHeight: "680px" }}>
       <Row className="py-5 d-flex justify-content-center ">
         <Col sm="12" className="d-flex flex-column ">
-          <label className="mx-auto title-login">تسجيل الدخول</label>
+          <label className="mx-auto title-login"> login</label>
           <input
-            placeholder="الايميل..."
+            placeholder="email..."
             type="text"
             className="user-input my-3 text-center mx-auto"
             value={email}
             onChange={changeEmail}
           />
           <input
-            placeholder="كلمه السر..."
+            placeholder=" password "
             type="password"
             className="user-input text-center mx-auto"
             value={password}
             onChange={changePassword}
           />
           <button onClick={onSubmt} className="btn-login mx-auto mt-4">
-            تسجيل الدخول
+           login
           </button>
           <label className="mx-auto my-4">
-            ليس لديك حساب ؟{" "}
+              You don't have account ؟{" "}
             <Link to="/register" style={{ textDecoration: "none" }}>
               <span style={{ cursor: "pointer" }} className="text-danger">
-                اضغط هنا
+                click Here
               </span>
             </Link>
           </label>
@@ -41,22 +41,19 @@ const LoginPage = () => {
               to="/user/forget-password"
               style={{ textDecoration: "none", color: "red" }}
             >
-              هل نسيت كلمه السر
-            </Link>
+Forget Password?            </Link>
           </label>
         </Col>
 
         <label className="mx-auto my-4">
           <Link to="/admin/allproducts" style={{ textDecoration: "none" }}>
             <span style={{ cursor: "pointer" }} className="text-danger">
-              الدخول ادمن
-            </span>
+login as an Admin            </span>
           </Link>
 
           <Link to="/user/allorders" style={{ textDecoration: "none" }}>
             <span style={{ cursor: "pointer" }} className="text-danger mx-3">
-              الدخول مستخدم
-            </span>
+login as a user            </span>
           </Link>
         </label>
       </Row>

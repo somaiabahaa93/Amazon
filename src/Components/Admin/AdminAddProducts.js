@@ -28,7 +28,7 @@ const AdminAddProducts = () => {
   const [subCatID, setSubCatId] = useState([]);
   const [options, setOptions] = useState([]);
 
-  const [selectedSubIds, setSelectedSubIds] = useState("");
+  const [selectedSubIds, setSelectedSubIds] = useState([]);
 
 
   const [showColor, setShowColor] = useState(false);
@@ -36,10 +36,10 @@ const AdminAddProducts = () => {
 
 
   //   get all categories
-  const categories = useSelector((state) => state.allCategory.category);
+  const categories = useSelector((state) => state.allCategory.categories);
   const brands = useSelector((state) => state.allBrand.brands);
   const products = useSelector((state) => state.allProducts.products);
-  const subCategories = useSelector((state) => state.allSubCategory.subCategory);
+  const subCategories = useSelector((state) => state.allSubCategory.subCategories);
 
 
 
@@ -135,7 +135,7 @@ function dataURLtoFile(dataurl, filename) {
         newImages.map((img)=>{return (formData.append("images",img))})
 
         colors.map((color)=>{return (formData.append("availableColors",color))})
-        selectedSubIds.map((item)=>{return (formData.append("subcategory",item._id))})
+        selectedSubIds?.map((item)=>{return (formData.append("subcategory",item._id))})
 
 
         setLoading(true)
@@ -212,8 +212,8 @@ useEffect(() => {
             onChange={onSelectCat}
           >
             <option value="0">التصنيف الرئيسي</option>
-            {categories.data
-              ? categories.data.map((item, index) => {
+            {categories?.data
+              ? categories?.data?.map((item, index) => {
                   return (
                     <option key={index} value={item._id}>
                       {item.name}

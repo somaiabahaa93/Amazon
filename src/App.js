@@ -36,9 +36,9 @@ import ProductsByBrandPage from "./Page/Products/ProductsByBrandPage";
 
 function App() {
   const [userData,isAdmin,isUser]=ProtectedRouteHook()
-  console.log("userData>>>",userData)
-  console.log("user>>>",isUser)
-  console.log("adm>>>",isAdmin)
+  // console.log("userData>>>",userData)
+  // console.log("user>>>",isUser)
+  // console.log("adm>>>",isAdmin)
 
   return (
     <div className="font" >
