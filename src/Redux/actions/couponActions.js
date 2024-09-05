@@ -12,7 +12,7 @@ import {
 
 export const getAllCoupons = (prodId, page, limit) => async (dispatch) => {
   try {
-    const res = await useGetDataToken(`/api/v1/coupons`);
+    const res = await useGetDataToken(`/api/v1/coupon`);
     // console.log("data",res)
     dispatch({ type: GET_ALL_COUPONS, payload: res });
   } catch (e) {
@@ -22,7 +22,7 @@ export const getAllCoupons = (prodId, page, limit) => async (dispatch) => {
 
 export const getOneCoupon = (id) => async (dispatch) => {
   try {
-    const res = await useGetDataToken(`/api/v1/coupons/${id}`);
+    const res = await useGetDataToken(`/api/v1/coupon/${id}`);
     // console.log("data",res)
     dispatch({ type: ONE_COUPON, payload: res });
   } catch (e) {
@@ -33,7 +33,7 @@ export const getOneCoupon = (id) => async (dispatch) => {
 export const deleteCoupon = (id) => async (dispatch) => {
   try {
     // const res = await baseURL.get("/api/v1/categories");
-    const res = await useDeleteData(`/api/v1/coupons/${id}`);
+    const res = await useDeleteData(`/api/v1/coupon/${id}`);
     dispatch({ type: DELETE_COUPON, payload: res });
   } catch (e) {
     dispatch({ type: DELETE_COUPON, payload: +e.response });
@@ -43,7 +43,7 @@ export const deleteCoupon = (id) => async (dispatch) => {
 export const editCoupon = (id, body) => async (dispatch) => {
   try {
     // const res = await baseURL.get("/api/v1/categories");
-    const res = await useUpdateData(`/api/v1/coupons/${id}`, body);
+    const res = await useUpdateData(`/api/v1/coupon/${id}`, body);
     console.log("updatedDeleted", res);
     dispatch({ type: EDIT_COUPON, payload: res });
   } catch (e) {
@@ -55,7 +55,7 @@ export const editCoupon = (id, body) => async (dispatch) => {
 export const addCoupon = (Data) => async (dispatch) => {
   try {
     // const res = await baseURL.get("/api/v1/categories");
-    const res = await useInsertData(`/api/v1/coupons`, Data);
+    const res = await useInsertData(`/api/v1/coupon`, Data);
     // console.log("data",res)
     dispatch({ type: ADD_COUPON, payload: res });
   } catch (e) {

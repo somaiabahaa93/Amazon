@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 const Pagination = ({pageCount,onPress}) => {
 
     const handlePageClick = (page) => { 
-        console.log("pagin",page.selected+1)
+        // console.log("pagin",page.selected+1)
         onPress(page.selected+1)
     };
     return (

@@ -8,7 +8,7 @@ import { clearAllCartItem, deleteCartItem, updateCartItem } from '../../Redux/ac
 const DeleteCartHook = (item) => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true)
-    const [itemCount, setItemCount] = useState(0)
+    const [itemCount, setItemCount] = useState(item?.quantity)
 
     const handelDeleteCart = async () => {
         setLoading(true)
@@ -18,10 +18,10 @@ const DeleteCartHook = (item) => {
     const onChangeCount = (e) => {
         setItemCount(e.target.value)
     }
-    useEffect(() => {
-        if (item)
-            setItemCount(item.count)
-    }, [])
+    // useEffect(() => {
+    //     if (item)
+    //         setItemCount(item.quantity)
+    // }, [])
     const res = useSelector(state => state.cartReducer.clearCart)
     useEffect(() => {
         if (loading === false) {
@@ -29,7 +29,7 @@ const DeleteCartHook = (item) => {
                 notify("تم الحذف بنجاح", "success")
                 setTimeout(() => {
                     window.location.reload(false)
-                }, 1000);
+                }, 2000);
             } else {
             }
 
@@ -51,10 +51,10 @@ const DeleteCartHook = (item) => {
 
     const handeleUpdateCart = async () => {
         await dispatch(updateCartItem(item._id, {
-            count: itemCount
+            quantity: itemCount
         }))
 
-        window.location.reload(false);
+        // window.location.reload(false);
     }
 
     return [handelDeleteCart, show, handleClose, handleShow, handelDeleteItem, itemCount, onChangeCount, handeleUpdateCart]

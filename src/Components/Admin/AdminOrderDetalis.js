@@ -1,14 +1,29 @@
 import React from 'react'
 import { Row,Col } from 'react-bootstrap'
 import CartItem from '../Cart/CartItem'
+import { ToastContainer } from 'react-toastify';
+
+import { useParams } from 'react-router-dom'
+import UserAllOrderItem from '../User/UserAllOrderItem'
+import OrderPayCashHook from '../../hook/Checkout/OrderPayCashHook'
+import GetOrderDetailsHook from '../../hook/Admin/GetOrderDetailsHook'
+import ChangeOrderStateHook from '../../hook/Admin/ChangeOrderStateHook'
 
 const AdminOrderDetalis = () => {
+    const {id}=useParams()
+    const   [data] =GetOrderDetailsHook(id)
+    const [onChangePaid,handleOnChangePaid,onChangeDeliver,handleOnChangeDeliverd]=ChangeOrderStateHook(id)
+
+    // console.log("data>>>>>>>>>>>>>>>>>>>>>>>>>..",data)
+    // const formDate=(dateString)=>{
+    //     const options={year:"numeric",month:"numeric",day:"numeric"}
+    //     return new Date(dateString).toLocaleDateString(undefined, options)
+    // }
+
     return (
         <div>
-            <div className='admin-content-text'>تفاصيل الطلب رقم#55</div>
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            {/* <div className='admin-content-text'>  Date of order is {formDate(data.createdAt)}</div> */}
+         <UserAllOrderItem orderItem={data}/>
 
             <Row className="justify-content-center mt-4 user-data">
                 <Col xs="12" className=" d-flex">
@@ -21,8 +36,7 @@ const AdminOrderDetalis = () => {
                             fontFamily: "Almarai",
                             fontSize: "16px",
                         }}>
-                        الاسم:
-                    </div>
+Name:                    </div>
 
                     <div
                         style={{
@@ -31,8 +45,7 @@ const AdminOrderDetalis = () => {
                             fontSize: "16px",
                         }}
                         className="mx-2">
-                        احمد عبداللة
-                    </div>
+{data?.user?.name}                    </div>
                 </Col>
 
                 <Col xs="12" className="d-flex">
@@ -42,8 +55,7 @@ const AdminOrderDetalis = () => {
                             fontFamily: "Almarai",
                             fontSize: "16px",
                         }}>
-                        رقم الهاتف:
-                    </div>
+Phone:                    </div>
 
                     <div
                         style={{
@@ -52,8 +64,7 @@ const AdminOrderDetalis = () => {
                             fontSize: "16px",
                         }}
                         className="mx-2">
-                        0021313432423
-                    </div>
+{data?.user?.phone}                    </div>
                 </Col>
                 <Col xs="12" className="d-flex">
                     <div
@@ -62,8 +73,7 @@ const AdminOrderDetalis = () => {
                             fontFamily: "Almarai",
                             fontSize: "16px",
                         }}>
-                        الايميل:
-                    </div>
+Email:                    </div>
 
                     <div
                         style={{
@@ -72,23 +82,38 @@ const AdminOrderDetalis = () => {
                             fontSize: "16px",
                         }}
                         className="mx-2">
-                        ahmed@gmail.com
-                    </div>
+{data?.user?.email}                    </div>
                 </Col>
-                <div className=" d-inline px-4 border text-center pt-2">
-                    المجموع ٤٠٠٠ جنيه
-                </div>
+               
                 <div className="d-flex mt-2 justify-content-center">
+                    <div>
                     <select
-                        name="languages"
-                        id="lang"
+                        name="deliver"
+                        onChange={onChangeDeliver}
+
+                        id="deliver"
                         className="select input-form-area mt-1  text-center px-2 w-50">
-                        <option value="val">حالة الطلب</option>
-                        <option value="val2">قيد التنفيذ</option>
-                        <option value="val2">تم الانتهاء</option>
-                        <option value="val2">الغاء</option>
+                        <option value="0">Deliverd </option>
+                        <option value="true">Done </option>
+                        <option value="false"> No</option>
                     </select>
-                    <button className="btn-a px-3 d-inline mx-2 ">حفظ </button>
+                    <button onClick={handleOnChangeDeliverd}  className="btn-a px-3 d-inline mx-2 ">save </button>
+
+                    <select
+                        name="paid"
+                        id="paid"
+                        onChange={onChangePaid}
+                        className="select input-form-area mt-1  text-center px-2 w-50">
+                        <option value="0">Payment </option>
+                        <option value="true">Done </option>
+                        <option value="false"> No</option>
+
+                       
+                    </select>
+                    <button onClick={handleOnChangePaid} className="btn-a px-3 d-inline mx-2 ">save </button>
+<ToastContainer/>
+                    </div>
+                    
                 </div>
             </Row>
         </div>

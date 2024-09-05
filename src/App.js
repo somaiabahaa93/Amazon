@@ -86,6 +86,8 @@ function App() {
           <Route path="/user/favoriteproducts" element={<UserFavoriteProductsPage />} />
           <Route path="/user/addresses" element={<UserAllAddresPage />} />
           <Route path="/user/add-address" element={<UserAddAddressPage />} />
+          <Route path="/order/paymethoud" element={<ChoosePayMethoudPage />} />
+
           <Route path="/user/edit-address/:id" element={<UserEditAddressPage />} />  
           <Route path="/user/profile" element={<UserProfilePage />} />  
           <Route path="/cart" element={<CartPage />} />

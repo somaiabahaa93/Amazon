@@ -8,8 +8,10 @@ import { useParams } from 'react-router-dom';
 import ViewProductDetailsHook from '../../hook/Product/ViewProductDetailsHook';
 const ProductGallery = () => {
     const {id}=useParams()
-    const [item,images,cat,proBrand,prods]=ViewProductDetailsHook(id)
-   
+    const [item,imageCover,images,cat,proBrand,prods]=ViewProductDetailsHook(id)
+   console.log("cooooover",imageCover)
+   console.log("coooooverssssssssssssssssssssss",images)
+
     // const images = [
     //     {
     //         original: `${mobile}`,
@@ -24,7 +26,7 @@ const ProductGallery = () => {
     return (
         <div className="product-gallary-card d-flex justfiy-content-center  align-items-center
         pt-2">
-            <ImageGallery items={images}
+            {images?( <ImageGallery items={images}
                 defaultImage={mobile}
                 showFullscreenButton={false}
                 isRTL={true}
@@ -32,7 +34,8 @@ const ProductGallery = () => {
                 showThumbnails={false}
                 renderRightNav={RightButton}
                 renderLeftNav={LeftButton}
-            />
+            />):null}
+           
         </div>
     )
 }

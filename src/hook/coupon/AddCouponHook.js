@@ -77,7 +77,7 @@ const AddCouponHook = () => {
         console.log(res);
   
         if (res.status === 400) {
-          console.log(res.data.errors[0].msg);
+          console.log(res?.data.errors[0].msg);
   
           notify(res.data.errors[0].msg, "error");
         }

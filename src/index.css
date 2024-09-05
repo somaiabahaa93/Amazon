@@ -414,6 +414,13 @@ body {
   border-radius: 20px;
   background-color: #ffffff;
 }
+
+.cart-item-body-admin {
+  height: 130px;
+  width: 100%;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
 .copon-input {
   box-sizing: border-box;
   height: 46px;
